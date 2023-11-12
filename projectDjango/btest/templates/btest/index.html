@@ -14,7 +14,22 @@
 		<h2>{{ bb.title }}</h2>
 		<p>{{ bb.content }}</p>
 		<p>{{ bb.published|date:"d.m.Y. H:i:s"}}</p>
+		<p>Категория: {{ bb.rubric.name }}</p>
 	</div>
 	{% endfor %}
+
+	<h1>Объявления по рубрикам</h1>
+	{% for r in rs %}
+	<div>
+	    <h2>{{ r.name }}</h2>
+	    {% for rbb in r.bb_set.all %} 
+		<h3 >{{ rbb.title }}</h3>
+		<p>{{ rbb.content }}</p>
+		<p>{{ rbb.published|date:"d.m.Y. H:i:s"}}</p>
+			
+	    {% endfor %}
+	</div>
+	{% endfor %}
+  
 </body>
 </html>
